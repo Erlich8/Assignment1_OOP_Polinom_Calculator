@@ -1,24 +1,33 @@
 package Scalars;
 
 public class Rational implements Scalar {
+    private int numerator;
+    private int denominator;
+
+    public Rational(int numerator, int denominator) {
+        this.numerator = numerator;
+        this.denominator = denominator;
+    }
+
     @Override
     public Scalar addition(Scalar s) {
-        return null;
+        return s.addRational(this);
     }
 
     @Override
     public Scalar multiplication(Scalar s) {
-        return null;
+        return s.mulRational(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
-        return null;
+        return new Rational(s.getNumerator() + numerator, denominator);
     }
 
     @Override
     public Scalar addInteger(Integer s) {
-        return null;
+        int num_add = s.getNumber() * denominator;
+        return new Rational(numerator + num_add, denominator);
     }
 
     @Override
@@ -39,5 +48,13 @@ public class Rational implements Scalar {
     @Override
     public int sign() {
         return 0;
+    }
+
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
     }
 }

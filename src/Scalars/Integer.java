@@ -1,35 +1,41 @@
 package Scalars;
 
 public class Integer implements Scalar {
+    private int number;
+
+    public Integer(int number) {
+        this.number = number;
+    }
 
     @Override
     public Scalar addition(Scalar s) {
-        return null;
+        return s.addInteger(this);
     }
 
     @Override
     public Scalar multiplication(Scalar s) {
-        return null;
+        return s.mulInteger(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
-        return null;
+        int num_add = number * s.getDenominator();
+        return new Rational(num_add + s.getNumerator(),s.getDenominator()); //add reduce
     }
 
     @Override
     public Scalar addInteger(Integer s) {
-        return null;
+        return new Integer(number + s.number);
     }
 
     @Override
     public Scalar mulRational(Rational s) {
-        return null;
+        return new Rational(number * s.getNumerator(),s.getDenominator()); //add reduce
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
-        return null;
+        return new Integer(number * s.number);
     }
 
     @Override
@@ -39,6 +45,15 @@ public class Integer implements Scalar {
 
     @Override
     public int sign() {
-        return 0;
+        if (number == 0){
+            return number;
+        }
+        else{
+            return number / Math.abs(number);
+        }
+    }
+
+    public int getNumber() {
+        return number;
     }
 }
