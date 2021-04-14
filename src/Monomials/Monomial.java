@@ -3,6 +3,14 @@ import Scalars.*;
 
 
 public class Monomial {
+    public int getExponent() {
+        return exponent;
+    }
+
+    public Scalar getCoefficient() {
+        return coefficient;
+    }
+
     private int exponent;
     private Scalar coefficient;
 
@@ -11,21 +19,22 @@ public class Monomial {
         this.coefficient = coefficient;
     }
 
-    Monomial add(Monomial m) {
+
+    public Monomial add(Monomial m) {
         if(this.exponent != m.exponent)
             return null;
         return new Monomial(m.exponent, this.coefficient.addition(m.coefficient));
     }
 
-    Monomial mult(Monomial m) {
+    public Monomial mult(Monomial m) {
         return new Monomial(this.exponent + m.exponent, this.coefficient.multiplication(m.coefficient));
     }
 
-    Scalar evaluate(Scalar s) {
+    public Scalar evaluate(Scalar s) {
         return this.coefficient.multiplication(s).power(this.exponent);
     }
 
-    Monomial derivative() {
+    public Monomial derivative() {
         return new Monomial(this.exponent - 1, this.coefficient.mulInteger(new Integer(this.exponent)));
     }
 
