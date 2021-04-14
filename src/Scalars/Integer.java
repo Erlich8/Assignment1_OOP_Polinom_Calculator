@@ -1,6 +1,7 @@
 package Scalars;
 
-public class Rational implements Scalar {
+public class Integer implements Scalar {
+
     @Override
     public Scalar addition(Scalar s) {
         return null;
