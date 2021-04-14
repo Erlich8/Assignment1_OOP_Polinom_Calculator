@@ -8,6 +8,11 @@ public class Integer implements Scalar {
     }
 
     @Override
+    public String toString() {
+        return String.format("%d", number);
+    }
+
+    @Override
     public Scalar addition(Scalar s) {
         return s.addInteger(this);
     }
@@ -20,7 +25,7 @@ public class Integer implements Scalar {
     @Override
     public Scalar addRational(Rational s) {
         int num_add = number * s.getDenominator();
-        return new Rational(num_add + s.getNumerator(),s.getDenominator()); //add reduce
+        return new Rational(num_add + s.getNumerator(),s.getDenominator()).reduce(); //add reduce
     }
 
     @Override
@@ -40,7 +45,7 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
-        return null;
+        return new Integer(number ^ exponent);
     }
 
     @Override
