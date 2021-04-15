@@ -126,7 +126,7 @@ public class Polynomial {
         int counter=0;
         for (int i : this.monomials.keySet()) {
             m = this.monomials.get(i);
-            if(!m.getCoefficient().zero())
+          if(!m.getCoefficient().isZero())
             {
             if (counter!=0)
                 s += "+";

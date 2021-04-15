@@ -9,5 +9,5 @@ public interface Scalar {
     public Scalar mulInteger(Integer s);
     public Scalar power(int exponent);
     public int sign();
-    public  boolean zero();
+    public  boolean isZero();
 }

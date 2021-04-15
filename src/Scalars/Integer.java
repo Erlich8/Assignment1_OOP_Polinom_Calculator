@@ -58,7 +58,7 @@ public class Integer implements Scalar {
         }
     }
     @Override
-    public boolean zero(){
+    public boolean isZero(){
         return this.getNumber()==0;
     }
 
