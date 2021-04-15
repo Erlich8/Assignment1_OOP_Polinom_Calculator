@@ -36,7 +36,7 @@ public class Monomial {
     }
 
     public Monomial derivative() {
-        return new Monomial(this.exponent - 1, this.coefficient.mulInteger(new Integer(this.exponent)));
+        return new Monomial(this.exponent - 1, this.coefficient.multiplication(new Integer(this.exponent)));
     }
 
     public int sign() {
@@ -63,7 +63,7 @@ public class Monomial {
             default: {
                 int sign = this.coefficient.sign();
                 if(sign < 0) {
-                    return "(" + this.coefficient.toString() + ")X^" + this.exponent;
+                    return "" + this.coefficient.toString() + "X^" + this.exponent;
                 }
                 return this.coefficient.toString() + "X^" + this.exponent;
             }
