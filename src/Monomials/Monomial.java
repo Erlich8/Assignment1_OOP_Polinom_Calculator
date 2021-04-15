@@ -56,6 +56,7 @@ public class Monomial {
     //    }
     @Override
     public String toString() {
+
         switch(this.exponent) {
             case(0): return this.coefficient.toString();
             case(1): return this.coefficient.toString()+"X";

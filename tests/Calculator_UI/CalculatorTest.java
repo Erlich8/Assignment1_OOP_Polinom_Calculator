@@ -1,6 +1,9 @@
 package Calculator_UI;
 
+import Monomials.Monomial;
 import Polynimials.Polynomial;
+import Scalars.Rational;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +25,10 @@ class CalculatorTest {
         Polynomial p11 = Polynomial.build("-1 -1");
         p2.toString();
 
-        //Add Tests
+        Monomial mono3 = new Monomial(3,new Rational(3,3));
+        Assert.assertEquals("3/3x^3 should be x^3",mono3.toString(),"x^3");
+
+            //Add Tests
 //        printTitle("Testing Add");
 //        printAdd(p1, p1, p1.add(p1));
 //        printAdd(p1, p2, p1.add(p2));
