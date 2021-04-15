@@ -49,6 +49,11 @@ public class Integer implements Scalar {
     }
 
     @Override
+    public Scalar neg() {
+        return new Integer(number * (-1));
+    }
+
+    @Override
     public int sign() {
         if (number == 0){
             return number;
