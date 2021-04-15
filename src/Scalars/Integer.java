@@ -57,6 +57,10 @@ public class Integer implements Scalar {
             return number / Math.abs(number);
         }
     }
+    @Override
+    public boolean zero(){
+        return this.getNumber()==0;
+    }
 
     public int getNumber() {
         return number;

@@ -1,5 +1,6 @@
 package Monomials;
 import Scalars.*;
+import Scalars.Integer;
 
 
 public class Monomial {
@@ -56,8 +57,8 @@ public class Monomial {
     @Override
     public String toString() {
         switch(this.exponent) {
-            case(0): return "1";
-            case(1): return this.coefficient.toString();
+            case(0): return this.coefficient.toString();
+            case(1): return this.coefficient.toString()+"X";
             default: {
                 int sign = this.coefficient.sign();
                 if(sign < 0) {

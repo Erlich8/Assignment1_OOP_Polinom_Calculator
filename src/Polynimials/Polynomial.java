@@ -35,6 +35,7 @@ public class Polynomial {
                 p.monomials.put(i, new Monomial(i, new Integer(intNum)));
 
             }
+            i++;
         }
         return p;
     }
@@ -78,7 +79,7 @@ public class Polynomial {
      * @return evalution of polynom
      */
     public Scalar evaluate(Scalar s) {
-        Rational sum = Rational(0, 1);
+        Rational sum = new Rational(0, 1);
         for (int i : this.monomials.keySet()) {
             sum.addition(this.monomials.get(i).evaluate(s));
         }
@@ -104,9 +105,17 @@ public class Polynomial {
      */
     private static int stringToInt(String number) {
         int intNum = 0;
-        for (int i = 0; i < number.length(); i++) {
+        int i = 0;
+        boolean neg=false;
+        if( number.charAt(i)=='-'){
+            i++;
+            neg=true;
+        }
+        for (; i < number.length(); i++) {
             intNum = intNum * 10 + number.charAt(i) - '0';
         }
+        if(neg)
+            intNum*=-1;
         return intNum;
     }
 
@@ -114,13 +123,20 @@ public class Polynomial {
     public String toString() {
         String s = "";
         Monomial m;
+        int counter=0;
         for (int i : this.monomials.keySet()) {
             m = this.monomials.get(i);
-            if (m.sign() == 1)
+            if(!m.getCoefficient().zero())
+            {
+            if (counter!=0)
                 s += "+";
             s += m.toString();
+            counter++;
+            }
+
         }
         return s;
     }
+
 
 }

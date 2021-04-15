@@ -86,6 +86,10 @@ public class Rational implements Scalar {
             return -1;
         }
     }
+    @Override
+    public boolean zero(){
+       return this.getNumerator()==0;
+    }
 
     public int getNumerator() {
         return numerator;
