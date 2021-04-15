@@ -25,8 +25,6 @@ class CalculatorTest {
         Polynomial p11 = Polynomial.build("-1 -1");
         p2.toString();
 
-        Monomial mono3 = new Monomial(3,new Rational(3,3));
-        Assert.assertEquals("3/3x^3 should be x^3",mono3.toString(),"x^3");
 
             //Add Tests
 //        printTitle("Testing Add");
