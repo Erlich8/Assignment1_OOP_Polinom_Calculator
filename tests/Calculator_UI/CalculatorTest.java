@@ -3,9 +3,7 @@ package Calculator_UI;
 import Monomials.Monomial;
 import Polynimials.Polynomial;
 import Scalars.Rational;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {

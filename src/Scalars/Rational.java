@@ -6,18 +6,20 @@ public class Rational implements Scalar {
 
     public Rational(int numerator, int denominator) {
         if (numerator == 0 || denominator == 0){
-            this.denominator = 0;
+            this.denominator = 1;
             this.numerator = 0;
         }
-        this.numerator = numerator;
-        this.denominator = denominator;
+        else {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
     }
 
     @Override
     public String toString() {
         Rational temp = this.reduce();
-        if (temp.getDenominator() == 1 || temp.getDenominator() == -1){
-            return String.format("%d", temp.sign() * Math.abs(temp.getNumerator()));
+        if (temp.getNumerator() % temp.getDenominator() == 0){
+            return String.format("%d", temp.getNumerator() / temp.getDenominator());
         }
         else{
             return String.format("%d/%d", temp.sign() * Math.abs(temp.getNumerator()), Math.abs(temp.getDenominator()));
@@ -29,7 +31,7 @@ public class Rational implements Scalar {
         return new Rational(numerator / gcd, denominator / gcd);
     }
 
-    public int GCD (int num1, int num2){
+    private int GCD (int num1, int num2){
         if (num2 == 0){
             return num1;
         }
@@ -81,7 +83,7 @@ public class Rational implements Scalar {
 
     @Override
     public int sign() {
-        if (numerator == 0){
+        if (numerator == 0 || denominator == 0){
             return 0;
         }
         else if ((numerator < 0 ^ denominator < 0)){
