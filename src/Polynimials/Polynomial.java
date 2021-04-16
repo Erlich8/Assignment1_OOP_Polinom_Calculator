@@ -14,7 +14,7 @@ public class Polynomial {
     }
 
     public Polynomial(Monomial m) {
-        monomials.put(m.getExponent(), m);
+        this.monomials.put(m.getExponent(), m);
     }
 
     /**
@@ -68,7 +68,7 @@ public class Polynomial {
         Polynomial mulPoly = new Polynomial();
         for (int i : p.monomials.keySet())
             for (int j : this.monomials.keySet()) {
-                mulPoly.add(new Polynomial(this.monomials.get(j).mult(p.monomials.get(i))));
+                mulPoly=mulPoly.add(new Polynomial(this.monomials.get(j).mult(p.monomials.get(i))));
             }
         return mulPoly;
     }
@@ -79,9 +79,9 @@ public class Polynomial {
      * @return evalution of polynom
      */
     public Scalar evaluate(Scalar s) {
-        Rational sum = new Rational(0, 1);
+        Scalar sum = new Rational(0, 1);
         for (int i : this.monomials.keySet()) {
-            sum.addition(this.monomials.get(i).evaluate(s));
+            sum=sum.addition(this.monomials.get(i).evaluate(s));
         }
         return sum;
     }
@@ -93,7 +93,7 @@ public class Polynomial {
     public Polynomial derivative() {
         Polynomial derivativePoly = new Polynomial();
         for (int i : this.monomials.keySet()) {
-            derivativePoly.add(new Polynomial(this.monomials.get(i).derivative()));
+            derivativePoly=derivativePoly.add(new Polynomial(this.monomials.get(i).derivative()));
         }
         return derivativePoly;
     }
@@ -128,13 +128,15 @@ public class Polynomial {
             m = this.monomials.get(i);
           if(!m.getCoefficient().isZero())
             {
-            if (counter!=0)
+            if (counter!=0&&m.sign()>0)
                 s += "+";
             s += m.toString();
             counter++;
             }
 
         }
+        if(s=="")
+            s="0";
         return s;
     }
 
