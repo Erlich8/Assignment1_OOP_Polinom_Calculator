@@ -5,8 +5,12 @@ public class Rational implements Scalar {
     private int denominator;
 
     public Rational(int numerator, int denominator) {
-        this.numerator = numerator;
-        if (denominator != 0){
+        if (numerator == 0 || denominator == 0){
+            this.denominator = 1;
+            this.numerator = 0;
+        }
+        else {
+            this.numerator = numerator;
             this.denominator = denominator;
         }
     }
@@ -14,26 +18,24 @@ public class Rational implements Scalar {
     @Override
     public String toString() {
         Rational temp = this.reduce();
-        if (temp.getDenominator() == 1){
-            return String.format("%d", temp.getNumerator());
+        if (temp.getNumerator() % temp.getDenominator() == 0){
+            return String.format("%d", temp.getNumerator() / temp.getDenominator());
         }
         else{
-            return String.format("%d/%d", temp.getNumerator(), temp.getDenominator());
+            return String.format("%d/%d", temp.sign() * Math.abs(temp.getNumerator()), Math.abs(temp.getDenominator()));
         }
     }
 
     public Rational reduce () {
-        int num1 = Math.abs(numerator);
-        int num2 = Math.abs(denominator);
-        while (num1 != num2){
-            if (num1 > num2){
-                num1 -= num2;
-            }
-            else{
-                num2 -= num1;
-            }
+        int gcd = GCD(numerator, denominator);
+        return new Rational(numerator / gcd, denominator / gcd);
+    }
+
+    private int GCD (int num1, int num2){
+        if (num2 == 0){
+            return num1;
         }
-        return new Rational(numerator / num2, denominator / num2);
+        return GCD(num2, num1 % num2);
     }
 
     @Override
@@ -71,20 +73,29 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
-        return new Rational(numerator ^ exponent, denominator ^ exponent).reduce();
+        return new Rational((int) Math.pow(numerator, exponent), (int) Math.pow(denominator, exponent)).reduce();
+    }
+
+    @Override
+    public Scalar neg() {
+        return new Rational(numerator * (-1), denominator);
     }
 
     @Override
     public int sign() {
-        if (numerator == 0){
+        if (numerator == 0 || denominator == 0){
             return 0;
         }
-        else if ((numerator / denominator) > 0){
-            return 1;
-        }
-        else{
+        else if ((numerator < 0 ^ denominator < 0)){
             return -1;
         }
+        else{
+            return 1;
+        }
+    }
+    @Override
+    public boolean isZero(){
+       return this.getNumerator()==0;
     }
 
     public int getNumerator() {
