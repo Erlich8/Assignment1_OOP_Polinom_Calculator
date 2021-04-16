@@ -45,7 +45,12 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
-        return new Integer(number ^ exponent);
+        return new Integer((int)Math.pow(number, exponent));
+    }
+
+    @Override
+    public Scalar neg() {
+        return new Integer(number * (-1));
     }
 
     @Override
