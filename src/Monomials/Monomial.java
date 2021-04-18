@@ -15,8 +15,15 @@ public class Monomial {
     private int exponent;
     private Scalar coefficient;
 
-    public Monomial(int exponent, Scalar coefficient){
-        this.exponent = exponent;
+    public Monomial(int exponent, Scalar coefficient) {
+        // TODO Check:
+        // 1. is the input correct for sure?
+        // 2. do they prefer to throw an exception or setting to 0 for negative values?
+        // if 1. is correct then we can set this.exponent = exponent otherwise use the next code:
+        if(exponent < 0)
+            this.exponent = 0;
+        else
+            this.exponent = exponent;
         this.coefficient = coefficient;
     }
 
@@ -28,11 +35,13 @@ public class Monomial {
     }
 
     public Monomial mult(Monomial m) {
+        // TODO check:
+        // what do we need to do when exponents are different?
         return new Monomial(this.exponent + m.exponent, this.coefficient.multiplication(m.coefficient));
     }
 
     public Scalar evaluate(Scalar s) {
-        return this.coefficient.multiplication(s).power(this.exponent);
+        return this.coefficient.multiplication(s.power(this.exponent));
     }
 
     public Monomial derivative() {
@@ -56,16 +65,19 @@ public class Monomial {
     //    }
     @Override
     public String toString() {
-
         switch(this.exponent) {
             case(0): return this.coefficient.toString();
-            case(1): return this.coefficient.toString()+"X";
+            case(1): return this.coefficient.toString() + "X";
             default: {
-                int sign = this.coefficient.sign();
-                if(sign < 0) {
-                    return "" + this.coefficient.toString() + "X^" + this.exponent;
-                }
-                return this.coefficient.toString() + "X^" + this.exponent;
+                int temp = this.coefficient.getNumber();
+                String str_num = "";
+                if(temp == -1)
+                    str_num += "-";
+                else if(temp == 0)
+                    return "0";
+                else if(temp != 1)
+                    str_num += this.coefficient.toString();
+                return str_num + "X^" + this.exponent;
             }
         }
     }

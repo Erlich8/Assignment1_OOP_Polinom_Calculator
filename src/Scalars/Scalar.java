@@ -11,4 +11,5 @@ public interface Scalar {
     public Scalar neg();
     public int sign();
     public  boolean isZero();
+    public  int getNumber();
 }
