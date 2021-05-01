@@ -93,9 +93,15 @@ public class Rational implements Scalar {
             return 1;
         }
     }
+
     @Override
     public boolean isZero(){
        return this.getNumerator()==0;
+    }
+
+    @Override
+    public int getNumber() {
+        return numerator / denominator;
     }
 
     public int getNumerator() {

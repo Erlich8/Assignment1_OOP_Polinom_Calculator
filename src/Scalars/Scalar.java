@@ -10,5 +10,6 @@ public interface Scalar {
     public Scalar power(int exponent);
     public Scalar neg();
     public int sign();
-    public  boolean isZero();
+    public boolean isZero();
+    public int getNumber();
 }
