@@ -14,6 +14,7 @@ class IntegerTest {
     private Integer int2;
     private Integer int3;
     private Rational rational1;
+    private Integer dans_int;
 
     @BeforeEach
     void setUp() {

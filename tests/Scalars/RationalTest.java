@@ -120,5 +120,6 @@ class RationalTest {
         Assertions.assertEquals(1, rational2.sign());
         Assertions.assertEquals(1, int1.sign());
         Assertions.assertEquals(0, zero1.sign());
+        Assertions.assertEquals(0, dans_rational.sign());
     }
 }
