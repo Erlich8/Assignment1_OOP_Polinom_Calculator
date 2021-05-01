@@ -42,27 +42,25 @@ public class Monomial {
     }
 
     public int sign() {
-        int sign = this.coefficient.sign();
-        if(sign  == 0) return -1;
-        return sign;
+        return this.coefficient.sign();
     }
 
     @Override
     public String toString() {
-        switch(this.exponent) {
-            case(0): return this.coefficient.toString();
-            case(1): return "X";
-            default: {
-                int temp = this.coefficient.getNumber();
-                String str_num = "";
-                if(temp == -1)
-                    str_num += "-";
-                else if(temp == 0)
+        if (this.exponent == 0) {
+            return coefficient.toString();
+        }
+         else if (this.exponent == 1){
+        return coefficient.toString() + "X";
+    }
+                else if (this.coefficient.toString().equals("-1"))
+                    return "-X^" + this.exponent;
+                else if (this.coefficient.toString().equals("0"))
                     return "0";
-                else if(temp != 1)
-                    str_num += this.coefficient.toString();
-                return str_num + "X^" + this.exponent;
+                else if (this.coefficient.toString().equals("1"))
+                    return  "X^" + this.exponent;
+                else {
+                    return this.coefficient.toString() + "X^" + this.exponent;
+                }
             }
         }
-    }
-}
