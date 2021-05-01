@@ -15,6 +15,7 @@ class RationalTest {
     private Rational zero1;
     private Rational zero2;
     private Integer int2;
+    private Rational dans_rational;
 
     @BeforeEach
     void setUp() {
@@ -26,6 +27,7 @@ class RationalTest {
         zero1 = new Rational(0, 55);
         zero2 = new Rational(121, 0);
         int2 = new Integer(2);
+        dans_rational = new Rational(0,2);
     }
 
     @Test
@@ -96,6 +98,7 @@ class RationalTest {
         Assertions.assertEquals("11/5", rational1.power(1).toString());
         Assertions.assertEquals("-11/5", negrational1.power(1).toString());
         Assertions.assertEquals("121/25", rational1.power(2).toString());
+        Assertions.assertEquals("0", dans_rational.power(2).toString());
 
     }
 
