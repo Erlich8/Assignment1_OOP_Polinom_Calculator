@@ -53,14 +53,13 @@ public class Monomial {
          else if (this.exponent == 1){
         return coefficient.toString() + "X";
     }
-                else if (this.coefficient.toString().equals("-1"))
-                    return "-X^" + this.exponent;
-                else if (this.coefficient.toString().equals("0"))
-                    return "0";
-                else if (this.coefficient.toString().equals("1"))
-                    return  "X^" + this.exponent;
-                else {
-                    return this.coefficient.toString() + "X^" + this.exponent;
-                }
+         else {
+            return switch (this.coefficient.toString()) {
+                case "-1" -> "-X^" + this.exponent;
+                case "0" -> "0";
+                case "1" -> "X^" + this.exponent;
+                default -> this.coefficient.toString() + "X^" + this.exponent;
+            };
+        }
             }
         }
