@@ -47,20 +47,29 @@ public class Monomial {
 
     @Override
     public String toString() {
-        if (this.exponent == 0) {
-            return coefficient.toString();
+        String coff = coefficient.toString();
+        String expo = "X^" + exponent;
+
+
+        if(this.coefficient.toString().equals("-1")) {
+            coff = "-";
+            expo = "X^" + this.exponent;
         }
-         else if (this.exponent == 1){
-        return coefficient.toString() + "X";
+        if (this.coefficient.toString().equals("1")) {
+            coff = "";
+            expo = "X^" + this.exponent;
+        }
+        if(this.exponent == 1){
+            expo = "X";
+        }
+        if(this.exponent == 0){
+            coff = this.coefficient + "";
+            expo = "";
+        }
+        if (this.coefficient.toString().equals("0")) {
+            coff = "0";
+            expo = "";
+        }
+        return coff + expo;
     }
-                else if (this.coefficient.toString().equals("-1"))
-                    return "-X^" + this.exponent;
-                else if (this.coefficient.toString().equals("0"))
-                    return "0";
-                else if (this.coefficient.toString().equals("1"))
-                    return  "X^" + this.exponent;
-                else {
-                    return this.coefficient.toString() + "X^" + this.exponent;
-                }
-            }
-        }
+}

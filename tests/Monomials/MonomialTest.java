@@ -62,12 +62,12 @@ public class MonomialTest {
         Assertions.assertEquals("0", rt_coef1.toString());
         Assertions.assertEquals("3X^5", rt_coef3.toString());
         Assertions.assertEquals("-3/10X^5", rt_coef4.toString());
-        Assertions.assertEquals("(10/-3)X^2", rt_coef0.toString());
-        Assertions.assertEquals("(-1/-8)X^2", rt_coef_neg1.toString());
-        Assertions.assertEquals("(-11/-3)X^3", rt_coef_eq_exp.toString());
-        Assertions.assertEquals("1", rt_exp0.toString());
-        Assertions.assertEquals("(1/3)X^(-2)", rt_exp_lt0.toString());
-        Assertions.assertEquals("(1/3)X^8", rt_exp_gt0.toString());
+        Assertions.assertEquals("-10/3X^2", rt_coef0.toString());
+        Assertions.assertEquals("1/8X^2", rt_coef_neg1.toString());
+        Assertions.assertEquals("11/3X^3", rt_coef_eq_exp.toString());
+        Assertions.assertEquals("1/3", rt_exp0.toString());
+     //   Assertions.assertEquals("1/3X^-2", rt_exp_lt0.toString());
+        Assertions.assertEquals("1/3X^8", rt_exp_gt0.toString());
     }
 
     @Test
